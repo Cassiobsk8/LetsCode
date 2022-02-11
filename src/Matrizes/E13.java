@@ -23,7 +23,7 @@ public class E13
         printMatrix(n);
     }
 
-    private static void printMatrix(int[][] mat)
+    public static void printMatrix(int[][] mat)
     {
         for (int[] ints : mat)
         {
