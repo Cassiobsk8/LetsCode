@@ -2,12 +2,12 @@ package OrientacaoObjetos.E1;
 
 public class Funcionario
 {
-    String nome;
-    String sobrenome;
-    String cidade;
-    String estado;
-    int horasTrabalhadas;
-    float valorPorHora;
+    private String nome;
+    private String sobrenome;
+    private String cidade;
+    private String estado;
+    private int horasTrabalhadas;
+    private float valorPorHora;
 
     Funcionario()
     {

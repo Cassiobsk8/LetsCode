@@ -2,13 +2,33 @@ package OrientacaoObjetos.E2;
 
 public class Livro
 {
-    String titulo;
-    String leitor;
-    int paginas;
-    int lidas;
+    private String titulo;
+    private String leitor;
+    private int paginas;
+    private int lidas;
 
     Livro()
     {
+    }
+
+    public void setTitulo(String titulo)
+    {
+        this.titulo = titulo;
+    }
+
+    public void setLeitor(String leitor)
+    {
+        this.leitor = leitor;
+    }
+
+    public void setPaginas(int paginas)
+    {
+        this.paginas = paginas;
+    }
+
+    public void setLidas(int lidas)
+    {
+        this.lidas = lidas;
     }
 
     void mostrarProgresso()

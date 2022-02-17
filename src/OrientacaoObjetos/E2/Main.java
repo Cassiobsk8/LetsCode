@@ -10,13 +10,13 @@ public class Main
         Livro livro = new Livro();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nome do livro:");
-        livro.titulo = scanner.nextLine();
+        livro.setTitulo(scanner.nextLine());
         System.out.println("Nome do leitor:");
-        livro.leitor = scanner.nextLine();
+        livro.setLeitor(scanner.nextLine());
         System.out.println("Numero de páginas:");
-        livro.paginas = scanner.nextInt();
+        livro.setPaginas(scanner.nextInt());
         System.out.println("Paginas lidas:");
-        livro.lidas = scanner.nextInt();
+        livro.setLidas(scanner.nextInt());
 
         livro.mostrarProgresso();
     }
