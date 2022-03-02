@@ -19,4 +19,10 @@ public class Operario extends Empregado
     {
         return super.calcularSalario() + (valorProducao * ((float) comissao / 100));
     }
+
+    @Override
+    public String toString()
+    {
+        return super.toString() + "Valor producao: " + valorProducao + "\nComissao: " + comissao + "%";
+    }
 }

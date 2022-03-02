@@ -19,4 +19,10 @@ public class Vendedor extends Empregado
     {
         return super.calcularSalario() + (valorVendas * (comissao / 100));
     }
+
+    @Override
+    public String toString()
+    {
+        return super.toString() + "\nValor das vendas: " + valorVendas + "\nComissão: " + comissao + "%";
+    }
 }
