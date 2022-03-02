@@ -1,19 +1,22 @@
 package OrientacaoObjetos.A2.E3;
 
 import OrientacaoObjetos.A2.E1.Pessoa;
+import OrientacaoObjetos.A2.TipoJornadaEmpregado;
 
 public class Empregado extends Pessoa
 {
     int codigoSetor;
     float salarioBase;
     float imposto;
+    TipoJornadaEmpregado tipoJornada;
 
-    public Empregado(String nome, int codigoSetor, float salarioBase, float imposto)
+    public Empregado(String nome, int codigoSetor, float salarioBase, float imposto, TipoJornadaEmpregado tipoJornada)
     {
         super(nome);
         this.codigoSetor = codigoSetor;
         this.salarioBase = salarioBase;
         this.imposto = imposto;
+        this.tipoJornada = tipoJornada;
     }
 
     public float calcularSalario()
@@ -41,6 +44,6 @@ public class Empregado extends Pessoa
     @Override
     public String toString()
     {
-        return "Nome: " + nome + "\n" + "Codigo do Setor: " + codigoSetor + "\n" + "Salario Base: " + salarioBase + "\n" + "Imposto: " + imposto + "\n" + "Salario Liquido: " + calcularSalario();
+        return "Nome: " + nome + "\n" + "Codigo do Setor: " + codigoSetor + "\n" + "Salario Base: " + salarioBase + "\n" + "Imposto: " + imposto + "\n" + "Salario Liquido: " + calcularSalario() + "\n" + "Tipo de Jornada: " + tipoJornada.getDescricao();
     }
 }

@@ -1,14 +1,15 @@
 package OrientacaoObjetos.A2.E4;
 
 import OrientacaoObjetos.A2.E3.Empregado;
+import OrientacaoObjetos.A2.TipoJornadaEmpregado;
 
 public class Administrador extends Empregado
 {
     float ajudaDeCusto;
 
-    public Administrador(String nome, int codigoSetor, float salarioBase, float imposto, float ajudaDeCusto)
+    public Administrador(String nome, int codigoSetor, float salarioBase, float imposto, float ajudaDeCusto, TipoJornadaEmpregado tipoJornada)
     {
-        super(nome, codigoSetor, salarioBase, imposto);
+        super(nome, codigoSetor, salarioBase, imposto, tipoJornada);
         this.ajudaDeCusto = ajudaDeCusto;
     }
 
