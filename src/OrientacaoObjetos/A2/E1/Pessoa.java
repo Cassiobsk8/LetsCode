@@ -2,7 +2,7 @@ package OrientacaoObjetos.A2.E1;
 
 public class Pessoa
 {
-    private String nome;
+    public String nome;
     private String endereco;
     private String telefone;
 
@@ -19,7 +19,7 @@ public class Pessoa
 
     public Pessoa(String nome)
     {
-
+        this.nome = nome;
     }
 
     public void setNome(String nome)
