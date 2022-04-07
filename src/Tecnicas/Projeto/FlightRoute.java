@@ -29,7 +29,7 @@ public class FlightRoute
         this.departure = convertDate(flightRouteSplit[3]);
         this.arrival = convertDate(flightRouteSplit[4]);
         this.price = new BigDecimal(flightRouteSplit[5]);
-        this.flightDuration = departure.until(arrival, ChronoUnit.HOURS);
+        this.flightDuration = Math.abs(departure.until(arrival, ChronoUnit.HOURS));
     }
 
     private static OffsetDateTime convertDate(String date)

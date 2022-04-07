@@ -23,7 +23,7 @@ public class Main
         Map<String, FlightSummary> flightSummaryMap = flightRouteList.stream().collect(Collectors.groupingBy(FlightRoute::getRoute)).entrySet().stream().map(Main::mapToSummary).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         //Cria o segundo arquivo de saída com os dados ordenados
-        FileHandler.writeFile("src/Tecnicas/Projeto/Saida/flightsSummary.csv", flightSummaryMap.forEach((k, v) -> mapG), "origin;destination;shortest_flight(h);longest_fight(h);cheapest_flight;most_expensive_flight;average_time;average_price");
+        FileHandler.writeFile("src/Tecnicas/Projeto/Saida/flightsSummary.csv", flightSummaryMap.entrySet().stream().map(e -> e.getKey() + ";" + e.getValue().toString()).toArray(String[]::new), "origin;destination;shortest_flight(h);longest_fight(h);cheapest_flight;most_expensive_flight;average_time;average_price");
     }
 
     private static Map.Entry<String, FlightSummary> mapToSummary(Map.Entry<String, List<FlightRoute>> entry)
