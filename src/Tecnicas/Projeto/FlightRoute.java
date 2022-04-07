@@ -41,6 +41,11 @@ public class FlightRoute
         return OffsetDateTime.of(Integer.parseInt(dateSplit2[2]), Integer.parseInt(dateSplit2[1]), Integer.parseInt(dateSplit2[0]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]), 0, OffsetDateTime.now().getOffset());
     }
 
+    public String getRoute()
+    {
+        return this.origin + ";" + this.destination;
+    }
+
     public String toFileLine()
     {
         return origin + ";" + destination + ";" + airline + ";" + departure.toString() + ";" + arrival.toString() + ";" + price.toString() + ";" + flightDuration + " Hours";
