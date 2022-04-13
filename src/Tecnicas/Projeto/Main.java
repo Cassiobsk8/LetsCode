@@ -18,12 +18,12 @@ public class Main
         //flightRouteList.forEach(System.out::println);
 
         // Cria o primeiro arquivo de saída com os dados de entrada + a duração do voo em horas
-        FileHandler.writeFile("src/Tecnicas/Projeto/Saida/flights.csv", flightRouteList.stream().map(FlightRoute::toFileLine).toArray(String[]::new), "origin;destination;airline;departure;arrival;price;time");
+        FileHandler.writeFile("src/Tecnicas/Projeto/Saida/flights.csv", flightRouteList.stream().sorted(Comparator.comparing(FlightRoute::getOrigin).thenComparing(FlightRoute::getDestination).thenComparing(FlightRoute::getFlightDuration).thenComparing(FlightRoute::getPrice).thenComparing(FlightRoute::getAirline)).map(FlightRoute::toFileLine).toArray(String[]::new), "origin;destination;airline;departure;arrival;price;time");
 
-        Map<String, FlightSummary> flightSummaryMap = flightRouteList.stream().collect(Collectors.groupingBy(FlightRoute::getRoute)).entrySet().stream().map(Main::mapToSummary).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        Map<String, FlightSummary> flightSummaryMap = flightRouteList.stream().sorted(Comparator.comparing(FlightRoute::getOrigin).thenComparing(FlightRoute::getDestination)).collect(Collectors.groupingBy(FlightRoute::getRoute)).entrySet().stream().map(Main::mapToSummary).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         //Cria o segundo arquivo de saída com os dados ordenados
-        FileHandler.writeFile("src/Tecnicas/Projeto/Saida/flightsSummary.csv", flightSummaryMap.entrySet().stream().map(e -> e.getKey() + ";" + e.getValue().toString()).toArray(String[]::new), "origin;destination;shortest_flight(h);longest_fight(h);cheapest_flight;most_expensive_flight;average_time;average_price");
+        FileHandler.writeFile("src/Tecnicas/Projeto/Saida/flightsSummary.csv", flightSummaryMap.entrySet().stream().map(e -> e.getKey() + ";" + e.getValue().toFileString()).toArray(String[]::new), "origin;destination;shortest_flight(h);longest_fight(h);cheapest_flight;most_expensive_flight;average_time;average_price");
     }
 
     private static Map.Entry<String, FlightSummary> mapToSummary(Map.Entry<String, List<FlightRoute>> entry)

@@ -2,6 +2,7 @@ package Tecnicas.Projeto;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class FlightRoute
@@ -26,19 +27,10 @@ public class FlightRoute
         this.origin = flightRouteSplit[0];
         this.destination = flightRouteSplit[1];
         this.airline = flightRouteSplit[2];
-        this.departure = convertDate(flightRouteSplit[3]);
-        this.arrival = convertDate(flightRouteSplit[4]);
+        this.departure = OffsetDateTime.parse(flightRouteSplit[3], DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss (XXX)"));
+        this.arrival = OffsetDateTime.parse(flightRouteSplit[4], DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss (XXX)"));
         this.price = new BigDecimal(flightRouteSplit[5]);
-        this.flightDuration = Math.abs(departure.until(arrival, ChronoUnit.HOURS));
-    }
-
-    private static OffsetDateTime convertDate(String date)
-    {
-        String[] dateSplit = date.split(" ");
-        String[] dateSplit2 = dateSplit[0].split("/");
-        String[] timeSplit = dateSplit[1].split(":");
-
-        return OffsetDateTime.of(Integer.parseInt(dateSplit2[2]), Integer.parseInt(dateSplit2[1]), Integer.parseInt(dateSplit2[0]), Integer.parseInt(timeSplit[0]), Integer.parseInt(timeSplit[1]), Integer.parseInt(timeSplit[2]), 0, OffsetDateTime.now().getOffset());
+        this.flightDuration = departure.until(arrival, ChronoUnit.HOURS);
     }
 
     public String getRoute()
@@ -66,16 +58,6 @@ public class FlightRoute
         return airline;
     }
 
-    public OffsetDateTime getDeparture()
-    {
-        return departure;
-    }
-
-    public OffsetDateTime getArrival()
-    {
-        return arrival;
-    }
-
     public BigDecimal getPrice()
     {
         return price;
@@ -84,11 +66,5 @@ public class FlightRoute
     public long getFlightDuration()
     {
         return flightDuration;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "FlightRoute{" + "origin='" + origin + '\'' + ", destination='" + destination + '\'' + ", airline='" + airline + '\'' + ", departure=" + departure + ", arrival=" + arrival + ", price=" + price + ", time=" + flightDuration + '}';
     }
 }
