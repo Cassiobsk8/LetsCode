@@ -40,7 +40,7 @@ public class FlightRoute
 
     public String toFileLine()
     {
-        return origin + ";" + destination + ";" + airline + ";" + departure.toString() + ";" + arrival.toString() + ";" + price.toString() + ";" + flightDuration + " Hours";
+        return origin + ";" + destination + ";" + airline + ";" + departure.toString() + ";" + arrival.toString() + ";R$ " + price.toString() + ";" + flightDuration + " Hours";
     }
 
     public String getOrigin()

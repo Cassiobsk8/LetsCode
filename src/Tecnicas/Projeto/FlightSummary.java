@@ -23,6 +23,6 @@ public class FlightSummary
 
     public String toFileString()
     {
-        return shortestFlight + ";" + longestFight + ";" + cheapestFlight + ";" + mostExpensiveFlight + ";" + averageTime + ";" + averagePrice;
+        return shortestFlight + ";" + longestFight + ";R$ " + cheapestFlight + ";R$ " + mostExpensiveFlight + ";" + averageTime + ";R$ " + averagePrice;
     }
 }
